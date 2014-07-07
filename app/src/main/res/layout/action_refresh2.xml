@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.AppCompat.ActionButton"
+    android:layout_width="32dp"
+    android:layout_gravity="left"
+    android:layout_marginRight="12dp"
+    android:layout_marginLeft="12dp"
+    android:layout_height="32dp"
+    android:indeterminateDrawable="@drawable/ic_action_refresh"
+    android:indeterminate="true" />
+<!--<ImageView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@drawable/ic_action_refresh"-->
+    <!--style="@style/Widget.AppCompat.ActionButton" />-->
+

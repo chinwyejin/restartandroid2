@@ -1,29 +1,30 @@
 package com.example.wyejin.myapplication;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+
+import com.example.wyejin.myapplication.Async.SyncData;
+import com.example.wyejin.myapplication.Async.SyncData2;
 import com.example.wyejin.myapplication.frag.PlaceholderFragment;
 
 
 public class MyActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     //http://www.tutorialspoint.com/android/android_fragments.htm
+    //http://www.androidhive.info/2013/11/android-working-with-action-bar/
+
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -33,6 +34,7 @@ public class MyActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    private MenuItem refreshMenuItem; // Refresh menu item
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,11 +100,25 @@ public class MyActivity extends ActionBarActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch(item.getItemId()) {
+            case R.id.action_settings:
+                Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_refresh:
+                Toast.makeText(this, "Refresh Clicked", Toast.LENGTH_SHORT).show();
+                // refresh
+                refreshMenuItem = item;
+                // load the data from server
+                new SyncData(refreshMenuItem).execute();
+                return true;
+            case R.id.action_refresh2:
+                Toast.makeText(this, "Refresh 2 Clicked", Toast.LENGTH_SHORT).show();
+                refreshMenuItem = item;
+                new SyncData2(this, item).execute();
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+
     }
 
 
