@@ -28,8 +28,9 @@ public class SyncData2 extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         // set the progress bar view
-        //refresh();
-        runRefresh();
+        m_item.setActionView(R.layout.action_refresh2);
+
+        m_item.expandActionView();
     }
 
     @Override
@@ -46,39 +47,9 @@ public class SyncData2 extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        stopRefresh();
-        //completeRefresh();
-    }
 
-    protected void stopRefresh() {
-        if (m_item != null) {
-            m_item.setActionView(null);
-        }
-    }
-
-    protected void runRefresh() {
-        if (m_item != null) {
-            m_item.setActionView(R.layout.action_refresh2);
-        }
-    }
-
-
-    public void refresh() {
-     /* Attach a rotating ImageView to the refresh item as an ActionView */
-        LayoutInflater inflater = (LayoutInflater)  m_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        ImageView iv = (ImageView) inflater.inflate(R.layout.action_refresh2, null);
-
-        Animation rotation = AnimationUtils.loadAnimation(m_context, R.anim.anim_refresh);
-        rotation.setRepeatCount(Animation.INFINITE);
-        iv.startAnimation(rotation);
-
-        m_item.setActionView(iv);
-
-        //TODO trigger loading
-    }
-
-    public void completeRefresh() {
-        m_item.getActionView().clearAnimation();
+        m_item.collapseActionView();
+        // remove the progress bar view
         m_item.setActionView(null);
     }
 }
