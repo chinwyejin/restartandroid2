@@ -3,6 +3,7 @@ package com.example.wyejin.myapplication.Async;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v4.view.MenuItemCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,9 +29,10 @@ public class SyncData2 extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         // set the progress bar view
-        m_item.setActionView(R.layout.action_refresh2);
-
-        m_item.expandActionView();
+//        m_item.setActionView(R.layout.action_refresh2);
+//        m_item.expandActionView();
+        MenuItemCompat.setActionView(m_item, R.layout.action_refresh2);
+        MenuItemCompat.expandActionView(m_item);
     }
 
     @Override
@@ -47,9 +49,11 @@ public class SyncData2 extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-
-        m_item.collapseActionView();
-        // remove the progress bar view
-        m_item.setActionView(null);
+//
+//        m_item.collapseActionView();
+//        // remove the progress bar view
+//        m_item.setActionView(null);
+        MenuItemCompat.collapseActionView(m_item);
+        MenuItemCompat.setActionView(m_item,null);
     }
 }
