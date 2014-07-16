@@ -1,15 +1,9 @@
-package com.example.wyejin.myapplication.Async;
+package com.example.wyejin.myapplication.async;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.view.MenuItemCompat;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 
 import com.example.wyejin.myapplication.R;
 

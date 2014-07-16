@@ -1,22 +1,17 @@
 package com.example.wyejin.myapplication;
 
-import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 
-import com.example.wyejin.myapplication.Async.SyncData;
-import com.example.wyejin.myapplication.Async.SyncData2;
+import com.example.wyejin.myapplication.async.SyncData;
+import com.example.wyejin.myapplication.async.SyncData2;
 import com.example.wyejin.myapplication.frag.PlaceholderFragment;
 
 
