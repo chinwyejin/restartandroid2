@@ -1,11 +1,5 @@
 apply plugin: 'com.android.application'
 
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-}
-
 android {
     compileSdkVersion 19
     buildToolsVersion '19.1.0'
@@ -33,4 +27,5 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.0.0'
     //compile 'com.android.support:support-v4:20.+'
 
+    compile files ('libs/GraphView-3.1.2.jar')
 }

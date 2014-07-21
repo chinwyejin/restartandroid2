@@ -65,6 +65,7 @@
     <orderEntry type="library" exported="" name="retrofit-1.6.1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
+    <orderEntry type="library" exported="" name="GraphView-3.1.2" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="androidplot-core-0.6.1" level="project" />
     <orderEntry type="library" exported="" name="okio-1.0.0" level="project" />
