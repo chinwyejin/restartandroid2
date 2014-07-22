@@ -1,5 +1,6 @@
 package com.example.wyejin.myapplication;
 
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -114,6 +116,7 @@ public class NavigationDrawerFragment extends Fragment {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
     }
 
+    private boolean isDrawerLocked=false;
     /**
      * Users of this fragment must call this method to set up the navigation drawer interactions.
      *
@@ -126,11 +129,19 @@ public class NavigationDrawerFragment extends Fragment {
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        // set up the drawer's list view with items and click listener
+
+        FrameLayout frameLayout = (FrameLayout) getActivity().findViewById(R.id.container);
+        if(((ViewGroup.MarginLayoutParams)frameLayout.getLayoutParams()).leftMargin == (int)getResources().getDimensionPixelSize(R.dimen.drawer_size)) {
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN, mDrawerListView);
+            drawerLayout.setScrimColor(Color.TRANSPARENT);
+            isDrawerLocked = true;
+        }
 
         ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+        if(!isDrawerLocked){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the navigation drawer and the action bar app icon.
@@ -185,7 +196,9 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
 
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        if(!isDrawerLocked) {
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
+        }
     }
 
     private void selectItem(int position) {
@@ -194,7 +207,9 @@ public class NavigationDrawerFragment extends Fragment {
             mDrawerListView.setItemChecked(position, true);
         }
         if (mDrawerLayout != null) {
-            mDrawerLayout.closeDrawer(mFragmentContainerView);
+            if(!isDrawerLocked){
+                mDrawerLayout.closeDrawer(mFragmentContainerView);
+            }
         }
         if (mCallbacks != null) {
             mCallbacks.onNavigationDrawerItemSelected(position);
