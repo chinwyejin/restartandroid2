@@ -7,20 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.wyejin.myapplication.async.SyncData;
 import com.example.wyejin.myapplication.async.SyncData2;
 import com.example.wyejin.myapplication.frag.PHF_GraphView;
 import com.example.wyejin.myapplication.frag.PlaceholderFragment;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.LineGraphView;
-
-
-import java.util.Arrays;
 
 public class MyActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
